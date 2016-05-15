@@ -23,24 +23,27 @@ if __name__ == '__main__':
 	inputdir = ''
 	vocabfile = ''
 	outputfile = ''
+	data_type = ''
 	try:
-		opts, args = getopt.getopt(sys.argv[1:],"hd:v:o",["idir=","vfile=","ofile="])
+		opts, args = getopt.getopt(sys.argv[1:],"ht:d:v:o",["idir=","vfile=","ofile="])
 	except getopt.GetoptError:
-		print 'test.py -d <inputdir> -v <vocab> -o <outputfile>'
+		print 'test.py -t <datatype> -d <inputdir> -v <vocab> -o <outputfile>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
-			print 'test.py -d <inputdir> -v <vocab> -o <outputfile>'
+			print 'test.py -t <datatype> -d <inputdir> -v <vocab> -o <outputfile>'
 			sys.exit()
 		elif opt in ("-d", "--idir"):
 			inputdir = arg
 		elif opt in ("-v", "--vfile"):
 			vocabfile = arg
+		elif opt in ("-t"):
+			data_type = arg
 		elif opt in ("-o", "--ofile"):
 			outputfile = arg
 
 	if inputdir == '' or vocabfile=='':
-		print 'test.py -d <inputdir> -v <vocab> -o <outputfile>'
+		print 'test.py -t <datatype> -d <inputdir> -v <vocab> -o <outputfile>'
 		sys.exit(2)
 
 	if outputfile == '':
@@ -66,13 +69,19 @@ if __name__ == '__main__':
 			for f in fileNames:
 				contain = ''
 				try:
-					root = ET.parse(dirPath+'/'+f).getroot()
-					title = root[0][2].text.strip()
-					text = ''
-					for p in root[0][3]:
-						text += p.text.strip()
-					contain =  title+'\n'+ text
-					sumContain += contain
+					if data_type == 'CIRB010':
+						root = ET.parse(dirPath+'/'+f).getroot()
+						date = root[0][1].text.strip()
+						title = root[0][2].text.strip()
+						text = ''
+						for p in root[0][3]:
+							text += p.text.strip()
+						contain = date + title + text
+						sumContain += contain
+					else:
+						fin = open(dirPath+'/'+f, 'r')
+						for line in fin.readlines():
+							sumContain += line.strip()
 				except:
 					contain = ''
 					
