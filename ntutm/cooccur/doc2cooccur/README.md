@@ -7,6 +7,7 @@ There are several methods in this folder to generate the cooccur matrix from inp
 - jieba 	(chinese parser)
 
 output formate :
+-The vocab_id is auto-generate from vocab file
 
 		vocab_id vocab_id cooccur_count
 		vocab_id vocab_id cooccur_count
