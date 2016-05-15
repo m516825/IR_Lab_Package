@@ -26,6 +26,7 @@ jieba vocab parser
 ---
 
 useage:
+
 		./run.sh jieba -t [data type] -d [directory of data(recursively wolk through)] -o [output file name]
 
 stanford vocab parser
@@ -33,4 +34,5 @@ stanford vocab parser
 This method will take bunch of time, since it has to load model for each sentence.
 
 useage:
+
 		./run.sh stanford -t [data type] -d [directory of data(recursively wolk through)] -o [output file name]
