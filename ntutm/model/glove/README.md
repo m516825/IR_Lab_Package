@@ -11,7 +11,7 @@ output formate :
 - A binary format vocab vector
 - A folder (vectors_[iteration]/) exists number of vocab size files, each file has its vector with plain text. The files are named by their vocab_id
 
-jieba vocab parser
+glove model
 ---
 
 useage:
