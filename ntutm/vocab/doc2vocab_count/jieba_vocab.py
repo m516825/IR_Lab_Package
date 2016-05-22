@@ -19,7 +19,7 @@ if __name__ == "__main__":
 	outputfile = ''
 	data_type = ''
 	try:
-		opts, args = getopt.getopt(sys.argv[1:],"ht:d:o",["idir=","ofile="])
+		opts, args = getopt.getopt(sys.argv[1:],"ht:d:o:",["idir=","ofile="])
 	except getopt.GetoptError:
 		print 'test.py -t <datatype> -d <inputdir> -o <outputfile>'
 		sys.exit(2)
@@ -71,7 +71,7 @@ if __name__ == "__main__":
 			print >> sys.stderr, '\rdone building '+str(float("{0:.2f}".format(build_time/total*100.)))+'% vocabulary set ', 
 
 	print >> sys.stderr, '\nstart dumping vocabulary set'			
-	vocab.dumpVocabWithCount('vocab_count_wordS.out', vocabDict, key=0)
+	vocab.dumpVocabWithCount(outputfile, vocabDict, key=0)
 	print >> sys.stderr, 'done dumping vocabulary set'			
 
 

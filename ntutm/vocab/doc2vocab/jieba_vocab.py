@@ -19,7 +19,7 @@ if __name__ == "__main__":
 	outputfile = ''
 	data_type = ''
 	try:
-		opts, args = getopt.getopt(sys.argv[1:],"ht:d:o",["idir=","ofile="])
+		opts, args = getopt.getopt(sys.argv[1:],"ht:d:o:",["idir=","ofile="])
 	except getopt.GetoptError:
 		print 'test.py -t <datatype> -d <inputdir> -o <outputfile>'
 		sys.exit(2)
